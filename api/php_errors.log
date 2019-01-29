@@ -1,0 +1,1 @@
+[29-Jan-2019 09:28:20 UTC] PHP Fatal error:  Cannot declare class CreateChartTable, because the name is already in use in /home/lg/public_html/kex/api/database/migrations/2019_01_29_092554_create_chart_table.php on line 36

@@ -20,6 +20,12 @@ class ChartController extends Controller
 
     public function createAccount(Request $request)
     {
+        $this->validate($request, [
+            'account' => 'required|unique:chart',
+            'name' => 'required',
+            'type' => 'required|alpha_dash'
+        ]);
+
         $account = Chart::create($request->all());
 
         return response()->json($account, 201);

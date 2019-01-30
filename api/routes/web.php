@@ -26,3 +26,15 @@ $router->group(['prefix' => 'chart'], function () use ($router) {
 
     $router->put('account/{id}', ['uses' => 'ChartController@updateAccount']);
 });
+
+$router->group(['prefix' => 'document'], function () use ($router) {
+    $router->get('/',  ['uses' => 'DocumentController@showDocuments']);
+
+    $router->get('/{id}', ['uses' => 'DocumentController@showDocument']);
+
+    $router->post('/', ['uses' => 'DocumentController@createDocument']);
+
+    $router->delete('/{id}', ['uses' => 'DocumentController@deleteDocument']);
+
+    $router->put('/{id}', ['uses' => 'DocumentController@updateDocument']);
+});

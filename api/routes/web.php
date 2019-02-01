@@ -38,3 +38,27 @@ $router->group(['prefix' => 'document'], function () use ($router) {
 
     $router->put('/{id}', ['uses' => 'DocumentController@updateDocument']);
 });
+
+$router->group(['prefix' => 'organziation'], function () use ($router) {
+    $router->get('/',  ['uses' => 'OrganizationController@showOrganizations']);
+
+    $router->get('/{id}', ['uses' => 'OrganizationController@showOrganization']);
+
+    $router->post('/', ['uses' => 'OrganizationController@createOrganization']);
+
+    $router->delete('/{id}', ['uses' => 'OrganizationController@deleteOrganization']);
+
+    $router->put('/{id}', ['uses' => 'OrganizationController@updateOrganization']);
+});
+
+$router->group(['prefix' => 'person'], function () use ($router) {
+    $router->get('/',  ['uses' => 'PersonController@showPersons']);
+
+    $router->get('/{id}', ['uses' => 'PersonController@showPerson']);
+
+    $router->post('/', ['uses' => 'PersonController@createPerson']);
+
+    $router->delete('/{id}', ['uses' => 'PersonController@deletePerson']);
+
+    $router->put('/{id}', ['uses' => 'PersonController@updatePerson']);
+});

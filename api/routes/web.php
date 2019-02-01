@@ -62,3 +62,15 @@ $router->group(['prefix' => 'person'], function () use ($router) {
 
     $router->put('/{id}', ['uses' => 'PersonController@updatePerson']);
 });
+
+$router->group(['prefix' => 'partner'], function () use ($router) {
+    $router->get('/',  ['uses' => 'PartnerController@showPartners']);
+
+    $router->get('/{id}', ['uses' => 'PartnerController@showPartner']);
+
+    $router->post('/', ['uses' => 'PartnerController@createPartner']);
+
+    $router->delete('/{id}', ['uses' => 'PartnerController@deletePartner']);
+
+    $router->put('/{id}', ['uses' => 'PartnerController@updatePartner']);
+});

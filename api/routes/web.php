@@ -74,3 +74,15 @@ $router->group(['prefix' => 'partner'], function () use ($router) {
 
     $router->put('/{id}', ['uses' => 'PartnerController@updatePartner']);
 });
+
+$router->group(['prefix' => 'journal'], function () use ($router) {
+    $router->get('/',  ['uses' => 'JournalController@showJournal']);
+
+    $router->get('/{id}', ['uses' => 'JournalController@showEntry']);
+
+    $router->post('/', ['uses' => 'JournalController@createEntry']);
+
+    $router->delete('/{id}', ['uses' => 'JournalController@deleteEntry']);
+
+    $router->put('/{id}', ['uses' => 'JournalController@updateEntry']);
+});

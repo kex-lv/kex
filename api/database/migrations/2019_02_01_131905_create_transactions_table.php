@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateChartTable extends Migration
+class CreateTransactionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateChartTable extends Migration
      */
     public function up()
     {
-        Schema::create('chart', function (Blueprint $table) {
+        Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('journal_id');
             $table->string('account', 45);
-            $table->string('name');
-            $table->string('type', 40);
-            $table->integer('parent_id');
-            $table->boolean('has_child');
+            $table->string('debit_credit', 45);
+            $table->double('amount');
+            $table->text('notes');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateChartTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chart');
+        Schema::dropIfExists('transactions');
     }
 }

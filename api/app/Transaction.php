@@ -4,17 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Journal extends Model
+class Transaction extends Model
 {
-    protected $table = 'journal';
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'document_id', 'date', 'notes'
+        'journal_id', 'account', 'debit_credit', 'amount', 'notes'
     ];
 
     /**

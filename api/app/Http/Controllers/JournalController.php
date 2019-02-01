@@ -21,10 +21,8 @@ class JournalController extends Controller
     public function createEntry(Request $request)
     {
         $this->validate($request, [
-            'person_id' => 'required',
-            'partner_id' => 'required',
-            'supplier' => 'required',
-            'client' => 'required'
+            'document_id' => 'required',
+            'date' => 'required'
         ]);
 
         $entry = Journal::create($request->all());

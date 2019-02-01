@@ -86,3 +86,15 @@ $router->group(['prefix' => 'journal'], function () use ($router) {
 
     $router->put('/{id}', ['uses' => 'JournalController@updateEntry']);
 });
+
+$router->group(['prefix' => 'transaction'], function () use ($router) {
+    $router->get('/',  ['uses' => 'TransactionController@showTransactions']);
+
+    $router->get('/{id}', ['uses' => 'TransactionController@showTransaction']);
+
+    $router->post('/', ['uses' => 'TransactionController@createTransaction']);
+
+    $router->delete('/{id}', ['uses' => 'TransactionController@deleteTransaction']);
+
+    $router->put('/{id}', ['uses' => 'TransactionController@updateTransaction']);
+});

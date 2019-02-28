@@ -15,7 +15,7 @@ class CreateChartTable extends Migration
     {
         Schema::create('chart', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('account', 45);
+            $table->string('account', 20);
             $table->string('name');
             $table->string('type', 40);
             $table->integer('parent_id');

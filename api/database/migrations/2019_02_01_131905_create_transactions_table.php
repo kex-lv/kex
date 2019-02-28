@@ -16,9 +16,11 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('journal_id');
-            $table->string('account', 45);
-            $table->string('debit_credit', 45);
-            $table->double('amount');
+            $table->string('account', 20);
+            $table->string('debit_credit', 10);
+            $table->integer('amount');
+            $table->integer('debit');
+            $table->integer('credit');
             $table->text('notes');
             $table->timestamps();
         });

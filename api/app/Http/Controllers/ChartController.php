@@ -44,4 +44,43 @@ class ChartController extends Controller
         Chart::findOrFail($id)->delete();
         return response('Deleted Successfully', 200);
     }
+
+    public function importChart(Request $request)
+    {
+        $path = $request->file('chart_file')->getRealPath();
+        $fp = fopen($path, 'r');
+        $chartData = [];
+        $i = 0;
+        while (($row = fgetcsv($fp, 1000, ",")) !== FALSE) {
+            if ($i == 0){
+               $i++;
+               continue;
+            }
+
+            $chartData[] = [
+                'name' => $row[0],
+                'account' => $row[1],
+                'type' => $row[2],
+                'has_child' => $row[3],
+                'parent_account' => $row[4],
+            ];
+
+            $i++;
+        }
+
+        foreach ($chartData as $chartEntry) {
+            unset($chartEntry['parent_account']);
+            $chartEntry['parent_id'] = 0;
+            Chart::create($chartEntry);
+        }
+
+        $chart = Chart::all()->toArray();
+        $chart = array_column($chart, 'id', 'account');
+        foreach ($chartData as $chartEntry) {
+            if ('' !== $chartEntry['parent_account']) {
+                $account = Chart::findOrFail($chart[$chartEntry['account']]);
+                $account->update(['parent_id' => $chart[$chartEntry['parent_account']]]);
+            }
+        }
+    }
 }

@@ -1,1 +1,6 @@
 [29-Jan-2019 09:28:20 UTC] PHP Fatal error:  Cannot declare class CreateChartTable, because the name is already in use in /home/lg/public_html/kex/api/database/migrations/2019_01_29_092554_create_chart_table.php on line 36
+[04-Mar-2019 09:29:25 Europe/Riga] PHP Fatal error:  Uncaught Error: Class 'Dotenv\Dotenv' not found in /home/lg/public_html/kex/api/bootstrap/app.php:6
+Stack trace:
+#0 /home/lg/public_html/kex/api/artisan(18): require()
+#1 {main}
+  thrown in /home/lg/public_html/kex/api/bootstrap/app.php on line 6

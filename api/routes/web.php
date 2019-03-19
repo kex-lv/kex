@@ -25,6 +25,8 @@ $router->group(['prefix' => 'chart'], function () use ($router) {
     $router->delete('account/{id}', ['uses' => 'ChartController@deleteAccount']);
 
     $router->put('account/{id}', ['uses' => 'ChartController@updateAccount']);
+
+    $router->post('importChart', ['uses' => 'ChartController@importChart']);
 });
 
 $router->group(['prefix' => 'document'], function () use ($router) {
